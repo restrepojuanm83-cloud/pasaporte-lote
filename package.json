@@ -1,0 +1,24 @@
+{
+  "name": "pasaporte-lote",
+  "version": "1.0.0",
+  "description": "This repository uses the recommended structure for a Soroban project:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://restrepojuanm83-cloud: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@github.com/restrepojuanm83-cloud/pasaporte-lote.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/restrepojuanm83-cloud/pasaporte-lote/issues"
+  },
+  "homepage": "https://github.com/restrepojuanm83-cloud/pasaporte-lote#readme",
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  }
+}
