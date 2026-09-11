@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasaporte Digital de Lote | Verificación Blockchain</title>
+<style>
+:root {
+  --primary: #0284c7;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --success: #16a34a;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.container {
+  max-width: 480px;
+  width: 100%;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 28px;
+}
+.header {
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #dcfce7;
+  color: var(--success);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
+.subtitle { color: #64748b; font-size: 0.9rem; margin: 0; }
+.info-group {
+  margin-bottom: 16px;
+}
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.value {
+  font-size: 1rem;
+  font-weight: 500;
+  word-break: break-all;
+}
+.btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+.footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <div class="badge">✓ Auténtico & Inmutable</div>
+  <h1>Pasaporte de Producto</h1>
+  <p class="subtitle">Registrado en Stellar Soroban Testnet</p>
+</div>
+
+<div class="info-group">
+  <div class="label">Identificador de Lote</div>
+  <div class="value" id="batch-id">LOTE-2026-001</div>
+</div>
+
+<div class="info-group">
+  <div class="label">Contrato Inteligente</div>
+  <div class="value" style="font-family: monospace; font-size: 0.8rem;">CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF</div>
+</div>
+
+<div class="info-group">
+  <div class="label">Estado de Cadena de Custodia</div>
+  <div class="value" style="color: var(--success);">Registro Activo & Verificado</div>
+</div>
+
+<a id="explorer-link" class="btn" href="https://stellar.expert/explorer/testnet/contract/CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF" target="_blank">
+  Verificar Transacción en Explorador Stellar
+</a>
+
+<div class="footer">
+  Powered by Stellar Blockchain & Soroban Smart Contracts
+</div>
+</div>
+</body>
+</html>
