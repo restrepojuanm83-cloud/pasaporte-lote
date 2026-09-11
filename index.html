@@ -49,9 +49,7 @@ body {
 }
 h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
 .subtitle { color: #64748b; font-size: 0.9rem; margin: 0; }
-.info-group {
-  margin-bottom: 16px;
-}
+.info-group { margin-bottom: 16px; }
 .label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -61,7 +59,7 @@ h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
   margin-bottom: 4px;
 }
 .value {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   word-break: break-all;
 }
@@ -75,8 +73,11 @@ h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
   padding: 12px;
   border-radius: 8px;
   font-weight: 600;
-  margin-top: 20px;
+  margin-top: 12px;
   box-sizing: border-box;
+}
+.btn-secondary {
+  background: #0f172a;
 }
 .footer {
   margin-top: 24px;
@@ -100,21 +101,29 @@ h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
 </div>
 
 <div class="info-group">
-  <div class="label">Contrato Inteligente</div>
-  <div class="value" style="font-family: monospace; font-size: 0.8rem;">CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF</div>
+  <div class="label">Certificado de Análisis (CoA IPFS)</div>
+  <div class="value" style="font-family: monospace; font-size: 0.8rem; color: #0284c7;">
+    QmQWQDFAbACmLbDoqn7NUnJjsm1CTS8soYXbADJ99qHNYM
+  </div>
 </div>
 
 <div class="info-group">
-  <div class="label">Estado de Cadena de Custodia</div>
-  <div class="value" style="color: var(--success);">Registro Activo & Verificado</div>
+  <div class="label">Contrato Inteligente</div>
+  <div class="value" style="font-family: monospace; font-size: 0.8rem;">
+    CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF
+  </div>
 </div>
 
-<a id="explorer-link" class="btn" href="https://stellar.expert/explorer/testnet/contract/CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF" target="_blank">
-  Verificar Transacción en Explorador Stellar
+<a class="btn btn-secondary" href="https://gateway.pinata.cloud/ipfs/QmQWQDFAbACmLbDoqn7NUnJjsm1CTS8soYXbADJ99qHNYM" target="_blank">
+  📄 Ver Certificado de Calidad (PDF en IPFS)
+</a>
+
+<a class="btn" href="https://stellar.expert/explorer/testnet/contract/CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF" target="_blank">
+  🔍 Verificar Transacción en Stellar
 </a>
 
 <div class="footer">
-  Powered by Stellar Blockchain & Soroban Smart Contracts
+  Powered by Stellar Blockchain, Soroban & IPFS
 </div>
 </div>
 </body>
