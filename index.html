@@ -91,7 +91,7 @@ h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
 <div class="container">
 <div class="header">
   <div class="badge">✓ Auténtico & Inmutable</div>
-  <h1>Pasaporte de Producto</h1>
+  <h1 id="product-name">Pasaporte de Producto</h1>
   <p class="subtitle">Registrado en Stellar Soroban Testnet</p>
 </div>
 
@@ -102,7 +102,7 @@ h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
 
 <div class="info-group">
   <div class="label">Certificado de Análisis (CoA IPFS)</div>
-  <div class="value" style="font-family: monospace; font-size: 0.8rem; color: #0284c7;">
+  <div class="value" id="cid-display" style="font-family: monospace; font-size: 0.8rem; color: #0284c7;">
     QmcMCiuYp2Q76vBQjjqpkNcmR6T777KTejDCUaxkhzpkt9
   </div>
 </div>
@@ -114,7 +114,7 @@ h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
   </div>
 </div>
 
-<a class="btn btn-secondary" href="https://violet-realistic-hookworm-4.mypinata.cloud/ipfs/QmcMCiuYp2Q76vBQjjqpkNcmR6T777KTejDCUaxkhzpkt9" target="_blank">
+<a id="btn-pdf" class="btn btn-secondary" href="#" target="_blank">
   📄 Ver Certificado de Calidad (PDF en IPFS)
 </a>
 
@@ -126,5 +126,19 @@ h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
   Powered by Stellar Blockchain, Soroban & IPFS
 </div>
 </div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const lote = urlParams.get("lote") || "LOTE-2026-001";
+const cid = urlParams.get("cid") || "QmcMCiuYp2Q76vBQjjqpkNcmR6T777KTejDCUaxkhzpkt9";
+const producto = urlParams.get("producto") || "Extracto de Romero";
+
+const gateway = "violet-realistic-hookworm-4.mypinata.cloud";
+
+document.getElementById("batch-id").textContent = lote;
+document.getElementById("cid-display").textContent = cid;
+document.getElementById("product-name").textContent = producto;
+document.getElementById("btn-pdf").href = "https://" + gateway + "/ipfs/" + cid;
+</script>
 </body>
 </html>
