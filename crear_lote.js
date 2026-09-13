@@ -6,7 +6,7 @@ const fs = require("fs");
 const FormData = require("form-data");
 
 const GATEWAY = "violet-realistic-hookworm-4.mypinata.cloud";
-const WEB_URL = "https://restrepojuanm83-cloud.github.io/pasaporte-lote/";
+const BASE_WEB_URL = "https://restrepojuanm83-cloud.github.io/pasaporte-lote/";
 
 async function crearPasaporteLote(batchId, producto, especificacion) {
   console.log("🚀 Iniciando emisión de Pasaporte Digital de Lote para: " + batchId);
@@ -48,15 +48,17 @@ async function crearPasaporteLote(batchId, producto, especificacion) {
 
   const cid = res.data.IpfsHash;
   console.log("📌 2. Subido a IPFS con CID: " + cid);
-  console.log("🔗 URL Documento: https://" + GATEWAY + "/ipfs/" + cid);
 
-  // 3. Generar Código QR
+  // 3. Generar Código QR con los datos dinámicos del lote
+  const targetUrl = BASE_WEB_URL + "?lote=" + encodeURIComponent(batchId) + "&cid=" + encodeURIComponent(cid) + "&producto=" + encodeURIComponent(producto);
   const qrPath = "qr_" + batchId + ".png";
-  await QRCode.toFile(qrPath, WEB_URL, {
+  
+  await QRCode.toFile(qrPath, targetUrl, {
     color: { dark: "#0284c7", light: "#ffffff" },
     width: 400
   });
-  console.log("📱 3. Código QR generado: " + qrPath);
+
+  console.log("📱 3. Código QR generado apuntando a: " + targetUrl);
   console.log("🎉 ¡Pasaporte emitido con éxito!");
 }
 

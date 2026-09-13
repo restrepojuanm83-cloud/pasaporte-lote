@@ -1,144 +1,58 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pasaporte Digital de Lote | Verificación Blockchain</title>
-<style>
-:root {
-  --primary: #0284c7;
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --text: #0f172a;
-  --success: #16a34a;
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  margin: 0;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
-.container {
-  max-width: 480px;
-  width: 100%;
-  background: var(--card);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  padding: 28px;
-}
-.header {
-  text-align: center;
-  border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #dcfce7;
-  color: var(--success);
-  font-weight: 600;
-  font-size: 0.85rem;
-  padding: 6px 12px;
-  border-radius: 20px;
-  margin-bottom: 12px;
-}
-h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
-.subtitle { color: #64748b; font-size: 0.9rem; margin: 0; }
-.info-group { margin-bottom: 16px; }
-.label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #64748b;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.value {
-  font-size: 0.95rem;
-  font-weight: 500;
-  word-break: break-all;
-}
-.btn {
-  display: block;
-  width: 100%;
-  text-align: center;
-  background: var(--primary);
-  color: white;
-  text-decoration: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  margin-top: 12px;
-  box-sizing: border-box;
-}
-.btn-secondary {
-  background: #0f172a;
-}
-.footer {
-  margin-top: 24px;
-  text-align: center;
-  font-size: 0.75rem;
-  color: #94a3b8;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasaporte RWA - Trazabilidad de Lotes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/12.4.0/stellar-sdk.min.js"></script>
 </head>
-<body>
-<div class="container">
-<div class="header">
-  <div class="badge">✓ Auténtico & Inmutable</div>
-  <h1 id="product-name">Pasaporte de Producto</h1>
-  <p class="subtitle">Registrado en Stellar Soroban Testnet</p>
-</div>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-6 font-sans">
+    <div class="max-w-2xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl">
+        <header class="border-b border-slate-800 pb-4 mb-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-sky-400">Pasaporte Digital RWA</h1>
+                <p class="text-xs text-slate-400">Verificacion Inmutables en Stellar Soroban & IPFS</p>
+            </div>
+            <span id="badge-estado" class="px-3 py-1 text-xs font-semibold rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">Cargando...</span>
+        </header>
 
-<div class="info-group">
-  <div class="label">Identificador de Lote</div>
-  <div class="value" id="batch-id">LOTE-2026-001</div>
-</div>
+        <div id="content" class="space-y-6">
+            <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-800/80">
+                <h2 class="text-sm font-medium text-slate-400 mb-1">Identificador del Lote</h2>
+                <p id="txt-lote" class="text-lg font-mono font-bold text-slate-200">--</p>
+            </div>
 
-<div class="info-group">
-  <div class="label">Certificado de Análisis (CoA IPFS)</div>
-  <div class="value" id="cid-display" style="font-family: monospace; font-size: 0.8rem; color: #0284c7;">
-    QmcMCiuYp2Q76vBQjjqpkNcmR6T777KTejDCUaxkhzpkt9
-  </div>
-</div>
+            <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-800/80">
+                <h2 class="text-sm font-medium text-slate-400 mb-2">Tridente Documental (IPFS)</h2>
+                <div class="grid grid-cols-3 gap-3">
+                    <a id="link-coa" href="#" target="_blank" class="block text-center p-2 rounded bg-slate-900 border border-slate-800 text-xs text-sky-400 hover:bg-slate-800 transition">CoA PDF</a>
+                    <a id="link-tds" href="#" target="_blank" class="block text-center p-2 rounded bg-slate-900 border border-slate-800 text-xs text-sky-400 hover:bg-slate-800 transition">TDS PDF</a>
+                    <a id="link-sds" href="#" target="_blank" class="block text-center p-2 rounded bg-slate-900 border border-slate-800 text-xs text-sky-400 hover:bg-slate-800 transition">SDS PDF</a>
+                </div>
+            </div>
 
-<div class="info-group">
-  <div class="label">Contrato Inteligente Soroban</div>
-  <div class="value" style="font-family: monospace; font-size: 0.8rem;">
-    CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF
-  </div>
-</div>
+            <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-800/80 space-y-2">
+                <h2 class="text-sm font-medium text-slate-400">Auditoria en Blockchain</h2>
+                <p class="text-xs text-slate-400 truncate"><strong>Tx Emision:</strong> <span id="txt-tx" class="font-mono text-slate-300">--</span></p>
+            </div>
+        </div>
+    </div>
 
-<a id="btn-pdf" class="btn btn-secondary" href="#" target="_blank">
-  📄 Ver Certificado de Calidad (PDF en IPFS)
-</a>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const lote = params.get("lote") || "LOTE-BIOTECH-2026-19";
+        const coa = params.get("coa") || "QmXpXg1xEDEPJ8rRjn2QmyM3fiCLFtHG58ECr8GWmxGjYS";
+        const tds = params.get("tds") || "QmSx2TK9dv4XFvYSZeChaJMdaktc5pUmBhhQvRo7Zj3mhC";
+        const sds = params.get("sds") || "QmRZCuE5ACba4KWL1dakmQZgkWRkJEC5rcoECUNkaMoa1j";
+        const tx = params.get("tx") || "78f0ab5c169908c4bc35fe46d33ffd06976736a8603c61bfa70f0c4e2f28b6b9";
 
-<a class="btn" href="https://stellar.expert/explorer/testnet/contract/CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF" target="_blank">
-  🔍 Verificar Transacción en Stellar
-</a>
-
-<div class="footer">
-  Powered by Stellar Blockchain, Soroban & IPFS
-</div>
-</div>
-
-<script>
-const urlParams = new URLSearchParams(window.location.search);
-const lote = urlParams.get("lote") || "LOTE-2026-001";
-const cid = urlParams.get("cid") || "QmcMCiuYp2Q76vBQjjqpkNcmR6T777KTejDCUaxkhzpkt9";
-const producto = urlParams.get("producto") || "Extracto de Romero";
-
-const gateway = "violet-realistic-hookworm-4.mypinata.cloud";
-
-document.getElementById("batch-id").textContent = lote;
-document.getElementById("cid-display").textContent = cid;
-document.getElementById("product-name").textContent = producto;
-document.getElementById("btn-pdf").href = "https://" + gateway + "/ipfs/" + cid;
-</script>
+        document.getElementById("txt-lote").innerText = lote;
+        document.getElementById("link-coa").href = "https://gateway.pinata.cloud/ipfs/" + coa;
+        document.getElementById("link-tds").href = "https://gateway.pinata.cloud/ipfs/" + tds;
+        document.getElementById("link-sds").href = "https://gateway.pinata.cloud/ipfs/" + sds;
+        document.getElementById("txt-tx").innerText = tx;
+        document.getElementById("badge-estado").innerText = "En Transito / Verificado";
+    </script>
 </body>
 </html>

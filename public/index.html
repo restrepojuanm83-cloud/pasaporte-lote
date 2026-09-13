@@ -1,121 +1,82 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pasaporte Digital de Lote | Verificación Blockchain</title>
-<style>
-:root {
-  --primary: #0284c7;
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --text: #0f172a;
-  --success: #16a34a;
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  margin: 0;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
-.container {
-  max-width: 480px;
-  width: 100%;
-  background: var(--card);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  padding: 28px;
-}
-.header {
-  text-align: center;
-  border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #dcfce7;
-  color: var(--success);
-  font-weight: 600;
-  font-size: 0.85rem;
-  padding: 6px 12px;
-  border-radius: 20px;
-  margin-bottom: 12px;
-}
-h1 { font-size: 1.4rem; margin: 8px 0; color: var(--text); }
-.subtitle { color: #64748b; font-size: 0.9rem; margin: 0; }
-.info-group {
-  margin-bottom: 16px;
-}
-.label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #64748b;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.value {
-  font-size: 1rem;
-  font-weight: 500;
-  word-break: break-all;
-}
-.btn {
-  display: block;
-  width: 100%;
-  text-align: center;
-  background: var(--primary);
-  color: white;
-  text-decoration: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  margin-top: 20px;
-  box-sizing: border-box;
-}
-.footer {
-  margin-top: 24px;
-  text-align: center;
-  font-size: 0.75rem;
-  color: #94a3b8;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasaporte RWA - Trazabilidad Verificada</title>
 </head>
-<body>
-<div class="container">
-<div class="header">
-  <div class="badge">✓ Auténtico & Inmutable</div>
-  <h1>Pasaporte de Producto</h1>
-  <p class="subtitle">Registrado en Stellar Soroban Testnet</p>
-</div>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 40px 20px; background: #f8fafc; color: #1e293b; max-width: 600px; margin: 0 auto;">
+    <div style="background: white; padding: 35px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <span style="background: #dcfce7; color: #166534; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold;">✓ Auténtico & Inmutable</span>
+        </div>
+        
+        <h1 style="color: #0f172a; font-size: 22px; text-align: center; margin: 0 0 5px 0;">Complejo Postbiótico Antienvejecimiento</h1>
+        <p style="color: #64748b; font-size: 13px; text-align: center; margin: 0 0 25px 0;">Registrado en Stellar Soroban Testnet</p>
+        
+        <div style="background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 20px;">
+            <p style="font-size: 11px; color: #64748b; margin: 0 0 4px 0; text-transform: uppercase; font-weight: bold;">Identificador de Lote</p>
+            <p id="batchIdDisp" style="font-size: 15px; color: #0f172a; font-weight: bold; margin: 0; font-family: monospace;">LOTE-BIOTECH-2026-18</p>
+        </div>
 
-<div class="info-group">
-  <div class="label">Identificador de Lote</div>
-  <div class="value" id="batch-id">LOTE-2026-001</div>
-</div>
+        <!-- TRIDENTE DOCUMENTAL -->
+        <div style="margin-bottom: 25px; background: #ffffff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px;">
+            <p style="font-size: 13px; font-weight: bold; color: #334155; margin-top: 0; margin-bottom: 12px;">Tridente Documental Certificado (IPFS)</p>
+            
+            <div style="margin-bottom: 8px;">
+                <a id="linkCoa" href="#" target="_blank" style="background: #f8fafc; border: 1px solid #cbd5e1; color: #0284c7; padding: 10px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: block;">📄 Certificado de Análisis (CoA) &rarr;</a>
+            </div>
+            <div style="margin-bottom: 8px;">
+                <a id="linkTds" href="#" target="_blank" style="background: #f8fafc; border: 1px solid #cbd5e1; color: #0284c7; padding: 10px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: block;">📊 Ficha Técnica (TDS) &rarr;</a>
+            </div>
+            <div>
+                <a id="linkSds" href="#" target="_blank" style="background: #f8fafc; border: 1px solid #cbd5e1; color: #0284c7; padding: 10px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: block;">⚠️ Hoja de Seguridad (SDS) &rarr;</a>
+            </div>
+        </div>
 
-<div class="info-group">
-  <div class="label">Contrato Inteligente</div>
-  <div class="value" style="font-family: monospace; font-size: 0.8rem;">CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF</div>
-</div>
+        <div style="margin-bottom: 15px;">
+            <a id="explorerLink" href="https://stellar.expert/explorer/testnet" target="_blank" style="background: #0284c7; color: white; padding: 14px; display: block; text-align: center; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 14px;">Verificar Transacción en Explorador Stellar</a>
+        </div>
+        
+        <p style="font-size: 11px; color: #94a3b8; text-align: center; margin-top: 25px; margin-bottom: 0;">Powered by Stellar Blockchain & Soroban Smart Contracts</p>
+    </div>
 
-<div class="info-group">
-  <div class="label">Estado de Cadena de Custodia</div>
-  <div class="value" style="color: var(--success);">Registro Activo & Verificado</div>
-</div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const lote = urlParams.get('lote');
+        const coa = urlParams.get('coa');
+        const tds = urlParams.get('tds');
+        const sds = urlParams.get('sds');
+        const tx = urlParams.get('tx');
+        const gateway = "violet-realistic-hookworm-4.mypinata.cloud";
 
-<a id="explorer-link" class="btn" href="https://stellar.expert/explorer/testnet/contract/CAJ7ONIUSPKD2XVPTVVWIMZVYYSBKFCHYZGNKO4MCQI5ACUOZHBRVWHF" target="_blank">
-  Verificar Transacción en Explorador Stellar
-</a>
+        if (lote) {
+            document.getElementById('batchIdDisp').innerText = lote;
+        }
+        
+        if (coa) {
+            document.getElementById('linkCoa').href = "https://" + gateway + "/ipfs/" + coa;
+        } else {
+            document.getElementById('linkCoa').href = "https://" + gateway + "/ipfs/QmVBpBnDDFP2AbmybiYn5ZubDt2vnzaq6TGAhXVnXY23UF";
+        }
 
-<div class="footer">
-  Powered by Stellar Blockchain & Soroban Smart Contracts
-</div>
-</div>
+        if (tds) {
+            document.getElementById('linkTds').href = "https://" + gateway + "/ipfs/" + tds;
+        } else {
+            document.getElementById('linkTds').href = "https://" + gateway + "/ipfs/QmetjDNM57K7yHxhWvpKguNHykqqZbPqwW6mCyiXmYvfQS";
+        }
+
+        if (sds) {
+            document.getElementById('linkSds').href = "https://" + gateway + "/ipfs/" + sds;
+        } else {
+            document.getElementById('linkSds').href = "https://" + gateway + "/ipfs/QmeBXSaew1pF5zRhw9N7jfFAe3vBGR82HWu8bdaK5Toghs";
+        }
+
+        if (tx) {
+            document.getElementById('explorerLink').href = "https://stellar.expert/explorer/testnet/tx/" + tx;
+        } else {
+            document.getElementById('explorerLink').href = "https://stellar.expert/explorer/testnet/tx/5a0909d0ad08d75560cc877d0ed1ed920a89df00f00b7043ac67e03e3ad3d424";
+        }
+    </script>
 </body>
 </html>
